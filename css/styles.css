@@ -1,5 +1,6 @@
-#result,
-#message {
+#stats,
+#message,
+#action-buttons {
   display: none;
 }
 

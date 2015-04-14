@@ -5,50 +5,49 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-2.1.3.js"></script>
     <script src="js/scripts.js"></script>
-    <title>TriangleJS</title>
+    <title>TamagotchiJS</title>
   </head>
   <body>
     <div class="container">
-      <h1>TriangleJS</h1>
-      <img src="img/triangle.jpg" alt="all-seeing eye triangle">
+      <h1>^_^</h1>
       <hr/>
       <div class="row" id="message">
         <h2 id="print-message" class="text-danger"></h2>
       </div>
-      <div class="row">
-        <div class="col-md-3">
-          <h3>New Triangle</h3>
-          <form id="triangle">
+      <div id="new" class="row">
+        <div class="col-md-12">
+          <h3>New Tamagotchi</h3>
+          <form id="new-tamagotchi">
             <div class="form-group">
-              <label for="sideA">Length of side A</label>
-              <input id="sideA" type="number" required>
-            </div>
-            <div class="form-group">
-              <label for="sideB">Length of side A</label>
-              <input id="sideB" type="number" required>
-            </div>
-            <div class="form-group">
-              <label for="sideC">Length of side A</label>
-              <input id="sideC" type="number" required>
+              <label for="name">Enter Tamagotchi's name</label>
+              <input id="name" type="text" required>
             </div>
             <button type="submit" class="btn btn-info">Submit</button>
           </form>
         </div>
-        <div class="col-md-3">
-          <h3>Equilateral triangles</h3>
-          <ul class="equilateral text-danger">
-          </ul>
+      </div>
+
+      <div id="stats" class="row">
+        <h2 id="tamagotchi-name"></h2>
+        <div class="col-md-4">
+          <h3>Hunger: <span id="hunger" class="text-danger"></span></h3>
         </div>
-        <div class="col-md-3">
-          <h3>Isosceles triangles</h3>
-          <ul class="isosceles text-danger">
-          </ul>
+        <div class="col-md-4">
+          <h3>Rest: <span id="rest" class="text-danger"></span></h3>
         </div>
-        <div class="col-md-3">
-          <h3>Scalene triangles</h3>
-          <ul class="scalene text-danger">
-          </ul>
+        <div class="col-md-4">
+          <h3>Activity: <span id="activity" class="text-danger"></span></h3>
         </div>
+      </div>
+
+      <div id="action-buttons" class="row">
+        <form id="#buttons">
+          <button name="food" type="submit">Feed Me!</button>
+          <button name="rest" type="submit">I'm Tired!</button>
+          <button name="play" type="submit">Play with me!</button>
+          <button name="time" type="submit">Leave me Alone!</button>
+          <button name="kick" type="submit">Don't kick me!</button>
+        </form>
       </div>
     </div>
   </body>

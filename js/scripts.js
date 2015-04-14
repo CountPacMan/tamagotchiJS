@@ -1,46 +1,49 @@
 jQuery(document).ready(function() {
-  $("#sideA").focus();
-  $("#triangle").submit(function(event) {
-    $("#warning").hide();
-    var newSideA = parseInt($("#sideA").val());
-    var newSideB = parseInt($("#sideB").val());
-    var newSideC = parseInt($("#sideC").val());
-    // var result = getTriangle(sideA, sideB, sideC);
-    var newTriangle = {
-      sideA: newSideA,
-      sideB: newSideB,
-      sideC: newSideC,
+  $("#new-tamagotchi").submit(function(event) {
+    $("#message").hide();
+    var newName = $("#name").val();
 
-      printTriangle: function() {
-        return "<li>" + this.sideA + ", " + this.sideB + ", "+ this.sideC + "</li>";
-      },
+    var newTamagotchi = {
+      name: newName,
+      hunger: 5,
+      rest: 5,
+      activity: 5,
 
-      getTriangle: function() {
-        // sides cannot be 0 and one side cannot be longer than the other
-        // two combined
-        if (this.sideA === 0 || this.sideB === 0 || this.sideC === 0 ||
-            this.sideA + this.sideB < this.sideC ||
-            this.sideB + this.sideC < this.sideA ||
-            this.sideA + this.sideC < this.sideB) {
-          $("#print-message").text("Not a triangle!");
+      getStatus: function() {
+        // any status at 0 or 10 = death
+        if (this.hunger < 1) {
+          $("#print-message").text(this.name + " died of starved!");
           $("#message").show();
-        } else if (this.sideA === this.sideB && this.sideA === this.sideC) {
-          $(".equilateral").append(this.printTriangle());
-          $("#print-message").text("Equilateral!");
+        } else if (this.rest < 1) {
+          $("#print-message").text(this.name + " died of exhausted!");
           $("#message").show();
-        } else if (this.sideA === this.sideB || this.sideA === this.sideC || this.sideB ===this.sideC) {
-          $(".isosceles").append(this.printTriangle());
-          $("#print-message").text("Isosceles!");
+        } else if (this.activity < 1) {
+          $("#print-message").text(this.name + " died of bored!");
+          $("#message").show();
+        } else if (this.hunger > 9) {
+          $("#print-message").text(this.name + " died of exploded!");
+          $("#message").show();
+        } else if (this.activity > 9) {
+          $("#print-message").text(this.name + " died of too many activity!");
+          $("#message").show();
+        } else if (this.rest > 9) {
+          $("#print-message").text(this.name + " died of too many sleeps!");
           $("#message").show();
         } else {
-          $(".scalene").append(this.printTriangle());
-          $("#print-message").text("Scalene!");
-          $("#message").show();
+          $("#message").hide();
+          $("#hunger").text(this.hunger);
+          $("#rest").text(this.rest);
+          $("#activity").text(this.activity);
         }
       }
     }
-    newTriangle.getTriangle();
+    $("#new").hide();
+    $("#stats").show();
+    $("#action-buttons").show();
+    $("#tamagotchi-name").text(newTamagotchi.name);
+    newTamagotchi.getStatus();
 
     event.preventDefault();
   });
+
 });
