@@ -1,7 +1,10 @@
-#stats,
 #message,
-#action-buttons {
+#new-button {
   display: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 img {
