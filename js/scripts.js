@@ -13,28 +13,28 @@ jQuery(document).ready(function() {
       getStatus: function() {
         // any status at 0 or 10 = death
         if (this.hunger < 1) {
-          $("#print-message").text(this.name + " died of starved!");
-          $("#message").show();
+          $("#" + this.name + " .print-message").text(this.name + " died of starved!");
+          $("#" + this.name + " .message").show();
         } else if (this.rest < 1) {
-          $("#print-message").text(this.name + " died of exhausted!");
-          $("#message").show();
+          $("#" + this.name + " .print-message").text(this.name + " died of exhausted!");
+          $("#" + this.name + " .message").show();
         } else if (this.happiness < 1) {
-          $("#print-message").text(this.name + " died of suicide!");
-          $("#message").show();
+          $("#" + this.name + " .print-message").text(this.name + " died of suicide!");
+          $("#" + this.name + " .message").show();
         } else if (this.hunger > 9) {
-          $("#print-message").text(this.name + " died of exploded!");
-          $("#message").show();
+          $("#" + this.name + " .print-message").text(this.name + " died of exploded!");
+          $("#" + this.name + " .message").show();
         } else if (this.happiness > 9) {
-          $("#print-message").text(this.name + " died of too many happiness!");
-          $("#message").show();
+          $("#" + this.name + " .print-message").text(this.name + " died of too many happiness!");
+          $("#" + this.name + " .message").show();
         } else if (this.rest > 9) {
-          $("#print-message").text(this.name + " died of too many sleeps!");
-          $("#message").show();
+          $("#" + this.name + " .print-message").text(this.name + " died of too many sleeps!");
+          $("#" + this.name + " .message").show();
         } else {
-          $("#message").hide();
-          $("#" + this.name + " #hunger").text(this.hunger);
-          $("#" + this.name + " #rest").text(this.rest);
-          $("#" + this.name + " #happiness").text(this.happiness);
+          $("#" + this.name + " .message").hide();
+          $("#" + this.name + " .hunger").text(this.hunger);
+          $("#" + this.name + " .rest").text(this.rest);
+          $("#" + this.name + " .happiness").text(this.happiness);
         }
       },
 
@@ -67,20 +67,38 @@ jQuery(document).ready(function() {
 
       showThis: function() {
         $("#unique").append("<li id='" + this.name + "'></li>");
-        $("#" + this.name).html("<div id='stats' class='row'><h2 id='tamagotchi-name'></h2><div class='col-md-4'><h3>Hunger: <span id='hunger' class='text-danger'></span></h3></div><div class='col-md-4'><h3>Rest: <span id='rest' class='text-danger'></span></h3></div><div class='col-md-4'>         <h3>Happiness: <span id='happiness' class='text-danger'></span></h3>        </div></div><div id='action-buttons' class='row'><form id='buttons'>          <button name='food' type='submit'>Feed Me!</button><button name='rest' type='submit'>Im Tired!</button><button name='play' type='submit'>Play with me!</button><button name='time' type='submit'>Leave me Alone!</button>            <button name='kick' type='submit'>Dont kick me!</button></form></div>");
+        $("#" + this.name).html("<div class='row' class='message'><h2 class='print-message text-danger'></h2></div><div class='stats row'><h2 class='tamagotchi-name'></h2><div class='col-md-4'><h3>Hunger: <span class='hunger text-danger'></span></h3></div><div class='col-md-4'><h3>Rest: <span class='rest text-danger'></span></h3></div><div class='col-md-4'>         <h3>Happiness: <span class='happiness text-danger'></span></h3>        </div></div><div class='action-buttons row'><button class='button-food' name='food'>Feed Me!</button><button class='button-rest' name='rest'>Im Tired!</button><button class='button-play' name='play'>Play with me!</button><button class='button-time' name='time'>Leave me Alone!</button><button name='kick'>Dont kick me!</button></div>");
       }
     }
     $("#new").hide();
     newTamagotchi.showThis();
 
     $("#new-button").show();
-    $("#tamagotchi-name").text(newTamagotchi.name);
+    $("#" + newTamagotchi.name + " .tamagotchi-name").text(newTamagotchi.name);
     newTamagotchi.getStatus();
 
-    $("#buttons").submit(function(event) {
+    $("#" + newTamagotchi.name + " .button-food").click(function(event) {
       event.preventDefault();
-      var buttonClicked = $(this.id).context.activeElement;
-      newTamagotchi.doStuff(buttonClicked.name);
+      var buttonClicked = $(this).attr("name");
+      newTamagotchi.doStuff(buttonClicked);
+    });
+
+    $("#" + newTamagotchi.name + " .button-rest").click(function(event) {
+      event.preventDefault();
+      var buttonClicked = $(this).attr("name");
+      newTamagotchi.doStuff(buttonClicked);
+    });
+
+    $("#" + newTamagotchi.name + " .button-play").click(function(event) {
+      event.preventDefault();
+      var buttonClicked = $(this).attr("name");
+      newTamagotchi.doStuff(buttonClicked);
+    });
+
+    $("#" + newTamagotchi.name + " .button-time").click(function(event) {
+      event.preventDefault();
+      var buttonClicked = $(this).attr("name");
+      newTamagotchi.doStuff(buttonClicked);
     });
 
     $("#new-button-form").submit(function(event) {
