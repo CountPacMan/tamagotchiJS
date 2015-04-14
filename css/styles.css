@@ -1,9 +1,21 @@
 #new-button {
   display: none;
+  border-radius: 10px;
+  background-color: #B2BAAA;
+}
+
+.new-button {
+  background:none!important;
+  border:none;
+  cursor: pointer;
+  color: #005C99;
+  font-weight: bold;
 }
 
 ul {
   list-style-type: none;
+  background-color: #B2B2AC;
+  border-radius: 10px;
 }
 
 img {
